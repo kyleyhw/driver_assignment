@@ -7,6 +7,8 @@ import pandas as pd
 #     return np.sqrt(np.dot(displacement, displacement))
 
 def distance(a, b):
+    # credit: users Jan Schultke and Salvador Dali on
+    # StackOverflow https://stackoverflow.com/questions/27928/calculate-distance-between-two-latitude-longitude-points-haversine-formula
     lon1, lat1 = a
     lon2, lat2 = b
 
