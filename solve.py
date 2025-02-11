@@ -64,4 +64,5 @@ def solve(verbose=False):
 
     return driver_assignments
 
-solve(verbose=True)
+if __name__ == '__solve__':
+    solve(verbose=True)

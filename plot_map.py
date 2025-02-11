@@ -11,25 +11,24 @@
 import matplotlib.pyplot as plt
 import matplotlib.colors as mcolors
 import pandas as pd
-from data_loader import get_coord_from_postcode
+from data_loader import get_coord_from_postcode, get_postcode_from_name, get_df
+from solve import solve
 
-filename = 'people.csv'
-
-driver_assignments = {'a': ['aa', 'bb', 'ff'], 'b': ['cc', 'dd', 'ee']}
-people = pd.read_csv(filename, delimiter=',', dtype='str')
+driver_assignments = solve(verbose=True)
+people = get_df()
 
 colors = [*mcolors.TABLEAU_COLORS.values()]
 
 plt.figure()
 
 for i, driver_name in enumerate(driver_assignments.keys()):
-    driver_postcode = people[people['Name'] == driver_name]['Postcode'].item()
+    driver_postcode = get_postcode_from_name(name=driver_name, df=people)
     driver_coords = get_coord_from_postcode(driver_postcode)
     plt.scatter(*driver_coords, c=colors[i], marker='x', label=driver_name)
+
     for passenger_name in driver_assignments[driver_name]:
-        passenger_postcode = people[people['Name'] == passenger_name]['Postcode'].item()
+        passenger_postcode = get_postcode_from_name(name=passenger_name, df=people)
         passenger_coords = get_coord_from_postcode(passenger_postcode)
-        # print(passenger_postcode)
         plt.scatter(*passenger_coords, c=colors[i])
 
 plt.legend()
