@@ -7,5 +7,7 @@ Plot below is generated from a simulated set of random names and postcodes, prov
 ![alt text](https://github.com/kyleyhw/driver_assignment/blob/main/driver_assignment_plot.png?raw=true)
 
 Planned updates:
-Plot updated to have map underlaid as background.
-Different max car sizes for each car. Currently hardcoded at 3, assuming 4 seater including driver.
+
+1. Plot updated to have map underlaid as background.
+
+2. Different max car sizes for each car. Currently hardcoded at 3, assuming 4 seater including driver.
