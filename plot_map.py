@@ -31,6 +31,10 @@ for i, driver_name in enumerate(driver_assignments.keys()):
         passenger_coords = get_coord_from_postcode(passenger_postcode)
         plt.scatter(*passenger_coords, c=colors[i])
 
+plt.ylabel('Longitude')
+plt.xlabel('Latitude')
+
 plt.legend()
+plt.grid(which='both')
 
 plt.show()
