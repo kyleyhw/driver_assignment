@@ -36,4 +36,6 @@ plt.xlabel('Latitude')
 plt.legend()
 plt.grid(which='both')
 
+plt.savefig('driver_assignment_plot.png')
+
 plt.show()
