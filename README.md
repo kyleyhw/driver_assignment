@@ -8,4 +8,4 @@ Plot below is generated from a simulated set of random names and postcodes, prov
 
 Planned updates:
 Plot updated to have map underlaid as background.
-Different max car sizes for each car. Currently set at 3, assuming 4 seater including driver.
+Different max car sizes for each car. Currently hardcoded at 3, assuming 4 seater including driver.
