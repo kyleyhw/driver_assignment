@@ -8,6 +8,10 @@ Plot below is generated from a simulated set of random names and postcodes, prov
 
 Planned updates:
 
-1. Plot updated to have map underlaid as background.
+1. Underlay map as plot background.
 
 2. Different max car sizes for each car. Currently hardcoded at 3, assuming 4 seater including driver.
+
+3. Rewrite cost function to incorporate destination information.
+
+4. Include pick up order.
