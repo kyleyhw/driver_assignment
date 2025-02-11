@@ -1,29 +1,26 @@
 import pandas as pd
-import numpy as np
-from misc_funcs import distance, get_coord_from_postcode
 
+def get_people_df(filename='people.csv'):
+    df = pd.read_csv(filename, delimiter=',', dtype='str')
+    return df
 
-def minimize_distance(filename):
-    people = pd.read_csv(filename, delimiter=',', dtype='str') # np.genfromtxt('people.csv', delimiter=',', dtype='str')
-    people_coords = {}
+def get_driver_and_passenger_names(df):
+    driver_names = df[df['Driver'] == '1']['Name'].to_numpy(dtype='str')
+    passenger_names = df[df['Driver'] == '0']['Name'].to_numpy(dtype='str')
+    return driver_names, passenger_names
 
-    for index, people_info in people.iterrows():
-        people_coords[people_info[0]] = get_coord_from_postcode(people_info['Postcode'])
+def get_postcode_from_name(name, df):
+    postcode = df[df['Name'] == name]['Postcode'].item()
+    return postcode
 
+def get_coord_from_postcode(postcode):
+    area_code_info = pd.read_csv('cb_area_codes.csv', delimiter=',')
 
-    driver_names = people[people['Driver'] == '1']['Name'].to_numpy(dtype='str')
-    passenger_names = people[people['Driver'] == '0']['Name'].to_numpy(dtype='str')
+    postcode_info_row = area_code_info.loc[area_code_info['Postcode'] == postcode]
+    longitude = float(postcode_info_row['Longitude'].values[0])
+    latitude = float(postcode_info_row['Latitude'].values[0])
 
+    return longitude, latitude
 
-    num_drivers = len(driver_names)
-    num_passengers = len(passenger_names)
-
-    cost_matrix = np.zeros(shape=(num_drivers, num_passengers))
-
-    for i, driver in enumerate(driver_names):
-        for j, passenger in enumerate(passenger_names):
-            cost_matrix[i,j] = distance(people_coords[driver], people_coords[passenger])
-
-    return driver_names, passenger_names, cost_matrix
 
 # minimize_distance('people.csv')

@@ -1,12 +1,12 @@
 """Solves a simple assignment problem."""
 from ortools.sat.python import cp_model
-from data_loader import minimize_distance
+from define_cost import minimize_distance
 import numpy as np
 
 
 def solve(verbose=False):
     # Data
-    driver_names, passenger_names, costs = minimize_distance(filename='people.csv')
+    driver_names, passenger_names, costs = minimize_distance()
     num_drivers = len(costs)
     num_passengers = len(costs[0])
 
@@ -61,5 +61,7 @@ def solve(verbose=False):
                     driver_assignments[driver_name].append(passenger_name)
     else:
         print("No solution found.")
+
+    return driver_assignments
 
 solve(verbose=True)
