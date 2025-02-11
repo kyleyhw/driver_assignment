@@ -3,10 +3,9 @@ from ortools.sat.python import cp_model
 from define_cost import minimize_distance
 import numpy as np
 
-
-def solve(verbose=False):
+def solve(df, verbose=False):
     # Data
-    driver_names, passenger_names, costs = minimize_distance()
+    driver_names, passenger_names, costs = minimize_distance(df=df)
     num_drivers = len(costs)
     num_passengers = len(costs[0])
 
@@ -66,4 +65,5 @@ def solve(verbose=False):
     return driver_assignments
 
 if __name__ == '__solve__':
-    solve(verbose=True)
+    from data_loader import get_df
+    solve(df=get_df(), verbose=True)

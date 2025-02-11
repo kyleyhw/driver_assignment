@@ -11,7 +11,8 @@ longitude_header = 'Longitude'
 latitude_header = 'Latitude'
 
 def get_df(filename=df_filename):
-    df = pd.read_csv(filename, delimiter=',', dtype='str')
+    df = pd.read_csv(filename, delimiter=',', dtype='str', header=0)
+    print(df)
     return df
 
 def get_driver_and_passenger_names(df):
@@ -24,7 +25,7 @@ def get_postcode_from_name(name, df):
     return postcode
 
 def get_coord_from_postcode(postcode):
-    area_code_info = pd.read_csv('cb_area_codes.csv', delimiter=',')
+    area_code_info = pd.read_csv('cb_area_codes.csv', delimiter=',', header=0)
 
     postcode_info_row = area_code_info.loc[area_code_info['Postcode'] == postcode]
     longitude = float(postcode_info_row[longitude_header].values[0])
@@ -33,4 +34,4 @@ def get_coord_from_postcode(postcode):
     return longitude, latitude
 
 
-# minimize_distance('people.csv')
+# minimize_distance('df.csv')
