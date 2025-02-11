@@ -1,21 +1,14 @@
 import pandas as pd
 import numpy as np
-from misc_funcs import distance
+from misc_funcs import distance, get_coord_from_postcode
 
 
-def data_loader_minimize_distance(filename):
-    area_code_info = pd.read_csv('cb_area_codes.csv', delimiter=',')
+def minimize_distance(filename):
     people = pd.read_csv(filename, delimiter=',', dtype='str') # np.genfromtxt('people.csv', delimiter=',', dtype='str')
     people_coords = {}
 
     for index, people_info in people.iterrows():
-        people_postcode = people_info['Postcode']
-
-        postcode_info_row = area_code_info.loc[area_code_info['Postcode'] == people_postcode]
-        longitude = float(postcode_info_row['Longitude'].values[0])
-        latitude = float(postcode_info_row['Latitude'].values[0])
-
-        people_coords[people_info[0]] = (longitude, latitude)
+        people_coords[people_info[0]] = get_coord_from_postcode(people_info['Postcode'])
 
 
     driver_names = people[people['Driver'] == '1']['Name'].to_numpy(dtype='str')
@@ -33,4 +26,4 @@ def data_loader_minimize_distance(filename):
 
     return driver_names, passenger_names, cost_matrix
 
-# data_loader_minimize_distance('people.csv')
+# minimize_distance('people.csv')
