@@ -20,8 +20,8 @@ def get_driver_and_passenger_names(df):
     passenger_names = df[df[driver_header] == driver_no][name_header].to_numpy(dtype='str')
     return driver_names, passenger_names
 
-def get_postcode_from_name(name, df):
-    postcode = df[df[name_header] == name][postcode_header].item()
+def get_postcode_from_name(name, people_information_dataframe):
+    postcode = people_information_dataframe[people_information_dataframe[name_header] == name][postcode_header].item()
     return postcode
 
 def get_coord_from_postcode(postcode):
@@ -34,4 +34,4 @@ def get_coord_from_postcode(postcode):
     return longitude, latitude
 
 
-# minimize_distance('df.csv')
+# minimize_distance('people_information_dataframe.csv')
