@@ -49,6 +49,7 @@ def solve(verbose=False):
     driver_assignments = None
     # Print solution and collect driver assignments.
     if status == cp_model.OPTIMAL or status == cp_model.FEASIBLE:
+        # print(f"Total distance = {solver.objective_value}\n")
         driver_assignments = {driver_name: [] for driver_name in driver_names}
         for driver, driver_name in enumerate(driver_names):
             for passenger, passenger_name in enumerate(passenger_names):
