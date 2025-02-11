@@ -11,8 +11,7 @@
 import matplotlib.pyplot as plt
 import matplotlib.colors as mcolors
 import pandas as pd
-import numpy as np
-from misc_funcs import get_coord_from_postcode
+from data_loader import get_coord_from_postcode
 
 filename = 'people.csv'
 
