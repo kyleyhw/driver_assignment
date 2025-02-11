@@ -1,10 +1,10 @@
 import numpy as np
 
-from data_loader import get_people_df, get_coord_from_postcode, get_driver_and_passenger_names, get_postcode_from_name
+from data_loader import get_df, get_coord_from_postcode, get_driver_and_passenger_names, get_postcode_from_name
 from misc_funcs import distance
 
 def minimize_distance():
-    people = get_people_df()
+    people = get_df()
 
     people_coords = {}
 

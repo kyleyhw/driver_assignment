@@ -1,5 +1,7 @@
 import pandas as pd
 
+df_filename = 'people.csv'
+
 name_header = 'Name'
 postcode_header = 'Postcode'
 driver_header = 'Driver'
@@ -8,7 +10,7 @@ driver_no = '0'
 longitude_header = 'Longitude'
 latitude_header = 'Latitude'
 
-def get_people_df(filename='people.csv'):
+def get_df(filename=df_filename):
     df = pd.read_csv(filename, delimiter=',', dtype='str')
     return df
 
