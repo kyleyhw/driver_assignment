@@ -55,7 +55,7 @@ def solve(people_information_dataframe, verbose=False):
                 if solver.boolean_value(x[driver, passenger]):
                     if verbose:
                         print(
-                            f"Driver {driver_names[driver]} assigned to passenger {passenger_names[passenger]} km."
+                            f"Driver {driver_names[driver]} assigned to passenger {passenger_names[passenger]}."
                             + f" Distance = {costs[driver][passenger]}"
                         )
                     driver_assignments[driver_name].append(passenger_name)
