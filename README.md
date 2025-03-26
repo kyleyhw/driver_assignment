@@ -8,10 +8,12 @@ Plot below is generated from a simulated set of random names and postcodes, prov
 
 Planned updates:
 
-1. Underlay map as plot background.
+1. Include pick up order within each car assignment by implementing travelling salesman brute force. This should still be polynomial runtime because cars are fixed in size; if the group is larger, the travelling salesman is simply run more times because cars do not get larger.
 
-2. Different max car sizes for each car. Currently hardcoded at 3, assuming 4 seater including driver.
+2. Quantify errors of this approximation, compared with full brute force travelling salesman solution.
 
 3. Rewrite cost function to incorporate destination information.
 
-4. Include pick up order.
+4. Implement road distance instead of physical distance.
+
+5. Different max car sizes for each car. Currently hardcoded at 3, assuming 4 seater including driver.
