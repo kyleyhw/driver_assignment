@@ -17,3 +17,15 @@ def distance(a, b):
 
     a = 0.5 - cos((lat2-lat1)*p)/2 + cos(lat1*p) * cos(lat2*p) * (1-cos((lon2-lon1)*p))/2
     return 2 * r * asin(sqrt(a))
+
+
+from pyproj import transform
+
+class translate_coordinates:
+    def __init__(self, input_coordinate_system, output_coordinate_system):
+        self.input_coordinate_system = input_coordinate_system
+        self.output_coordinate_system = output_coordinate_system
+
+    def translate(self, x, y):
+        output_x, output_y = transform(self.input_coordinate_system, self.output_coordinate_system, x, y)
+        return output_x, output_y
