@@ -1,11 +1,13 @@
 """Solves a simple assignment problem."""
 from ortools.sat.python import cp_model
-from define_cost import minimize_distance
+from data_loader import get_names_and_coords
+from define_cost import get_physical_distance_matrix
 import numpy as np
 
 def solve(people_information_dataframe, verbose=False):
     # Data
-    driver_names, passenger_names, costs = minimize_distance(people_information_dataframe=people_information_dataframe)
+    driver_names, passenger_names, driver_coords, passenger_coords = get_names_and_coords(people_information_dataframe=people_information_dataframe)
+    costs = get_physical_distance_matrix(driver_coords=driver_coords, passenger_coords=passenger_coords)
     num_drivers = len(costs)
     num_passengers = len(costs[0])
 

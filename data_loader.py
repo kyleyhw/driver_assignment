@@ -38,4 +38,19 @@ def get_coords_from_name(name, people_information_dataframe):
     return longitude, latitude
 
 
-# minimize_distance('people_information_dataframe.csv')
+def get_names_and_coords(people_information_dataframe):
+    driver_names, passenger_names = get_driver_and_passenger_names(people_information_dataframe)
+
+    driver_coords = []
+    for name in driver_names:
+        driver_coords.append(get_coords_from_name(name=name, people_information_dataframe=people_information_dataframe))
+
+    passenger_coords = []
+    for name in passenger_names:
+        passenger_coords.append(
+            get_coords_from_name(name=name, people_information_dataframe=people_information_dataframe))
+
+    return driver_names, passenger_names, driver_coords, passenger_coords
+
+
+# get_names_and_coords('people_information_dataframe.csv')

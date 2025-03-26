@@ -1,25 +1,17 @@
 import numpy as np
 
-from data_loader import get_df, get_coord_from_postcode, get_driver_and_passenger_names, get_postcode_from_name
 from misc_funcs import distance
 
-def minimize_distance(people_information_dataframe):
 
-    people_coords = {}
 
-    driver_names, passenger_names = get_driver_and_passenger_names(people_information_dataframe)
-
-    for name in np.concatenate((driver_names, passenger_names)):
-        postcode = get_postcode_from_name(name, people_information_dataframe=people_information_dataframe)
-        people_coords[name] = get_coord_from_postcode(postcode)
-
-    num_drivers = len(driver_names)
-    num_passengers = len(passenger_names)
+def get_physical_distance_matrix(driver_coords, passenger_coords):
+    num_drivers = len(driver_coords)
+    num_passengers = len(passenger_coords)
 
     cost_matrix = np.zeros(shape=(num_drivers, num_passengers))
 
-    for i, driver in enumerate(driver_names):
-        for j, passenger in enumerate(passenger_names):
-            cost_matrix[i,j] = distance(people_coords[driver], people_coords[passenger])
+    for i, driver_coord in enumerate(driver_coords):
+        for j, passenger_coord in enumerate(passenger_coords):
+            cost_matrix[i,j] = distance(driver_coord, passenger_coord)
 
-    return driver_names, passenger_names, cost_matrix
+    return cost_matrix
