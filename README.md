@@ -31,19 +31,43 @@ The primary components of this project are:
 ## Directory Structure
 
 ```
-.
-├── cb_area_codes.csv
-├── data_loader.py
-├── define_cost.py
-├── driver_assignment_plot.png
-├── ex_sample.shp
-├── misc_funcs.py
-├── people.csv
-├── plot_map.py
-├── plot_polygons.py
-├── README.md
-└── solve.py
+/Users/kylewong/PycharmProjects/driver_assignment/
+├───.gitignore
+├───cb_area_codes.csv
+├───data_loader.py
+├───define_cost.py
+├───driver_assignment_plot.png
+├───ex_sample.shp
+├───LICENSE
+├───misc_funcs.py
+├───people.csv
+├───plot_map.py
+├───plot_polygons.py
+├───README.md
+├───solve.py
+├───.git/...
+├───.idea/
+│   ├───.gitignore
+│   ├───driver_assignment.iml
+│   ├───misc.xml
+│   ├───modules.xml
+│   ├───vcs.xml
+│   └───inspectionProfiles/
+│       └───profiles_settings.xml
+└───docs/
+    ├───define_cost.md
+    ├───misc_funcs.md
+    └───solve.md
 ```
+
+## Documentation
+
+This project is documented using Markdown files in the `/docs` directory. The documentation provides detailed explanations of the code, mathematical formulations, and design choices.
+
+- [`/docs/index.md`](/docs/index.md): Central hub for all documentation.
+- [`/docs/define_cost.md`](/docs/define_cost.md): Documentation for the cost function definition.
+- [`/docs/misc_funcs.md`](/docs/misc_funcs.md): Documentation for miscellaneous helper functions.
+- [`/docs/solve.md`](/docs/solve.md): Documentation for the main solver script.
 
 ## Getting Started
 
@@ -73,7 +97,7 @@ The assignment problem is modeled as a cost minimization problem, where the cost
 
 ### Cost Function
 
-The distance between two geographical points (latitude and longitude) is calculated using the Haversine formula [1]. This formula calculates the great-circle distance between two points on a sphere, which is a good approximation for the Earth's surface.
+The distance between two geographical points (latitude and longitude) is calculated using the Haversine formula [[1]](#ref-haversine). This formula calculates the great-circle distance between two points on a sphere, which is a good approximation for the Earth's surface.
 
 The Haversine formula is given by:
 
@@ -86,12 +110,12 @@ $d = R \cdot c$
 where:
 - $\phi$ is latitude, $\lambda$ is longitude
 - $\Delta\phi$ and $\Delta\lambda$ are the differences in latitude and longitude
-- $R$ is the radius of the Earth (approximately 6371 km [2])
+- $R$ is the radius of the Earth (approximately 6371 km [[2]](#ref-nasa-earth))
 - $d$ is the distance between the two points
 
 ### Optimization Model
 
-The assignment problem is solved using Google's CP-SAT solver [3]. The model is set up with the following variables and constraints:
+The assignment problem is solved using Google's CP-SAT solver [[3]](#ref-google-cpsat). The model is set up with the following variables and constraints:
 
 - **Variables**: A set of boolean variables $x_{ij}$, where $x_{ij}$ is true if driver $i$ is assigned to passenger $j$, and false otherwise.
 
@@ -138,8 +162,8 @@ Distributed under the MIT License. See `LICENSE` for more information.
 
 ## References
 
-[1] Wikipedia. (2023). *Haversine formula*. [https://en.wikipedia.org/wiki/Haversine_formula](https://en.wikipedia.org/wiki/Haversine_formula)
+<span id="ref-haversine">[1]</span> Wikipedia. (2023). *Haversine formula*. [https://en.wikipedia.org/wiki/Haversine_formula](https://en.wikipedia.org/wiki/Haversine_formula)
 
-[2] NASA. (n.d.). *Earth Fact Sheet*. [https://nssdc.gsfc.nasa.gov/planetary/factsheet/earthfact.html](https://nssdc.gsfc.nasa.gov/planetary/factsheet/earthfact.html)
+<span id="ref-nasa-earth">[2]</span> NASA. (n.d.). *Earth Fact Sheet*. [https://nssdc.gsfc.nasa.gov/planetary/factsheet/earthfact.html](https://nssdc.gsfc.nasa.gov/planetary/factsheet/earthfact.html)
 
-[3] Google for Developers. (n.d.). *CP-SAT Solver*. [https://developers.google.com/optimization/cp/cp_solver](https://developers.google.com/optimization/cp/cp_solver)
+<span id="ref-google-cpsat">[3]</span> Google for Developers. (n.d.). *CP-SAT Solver*. [https://developers.google.com/optimization/cp/cp_solver](https://developers.google.com/optimization/cp/cp_solver)
