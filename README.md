@@ -116,11 +116,11 @@ The project includes scripts to visualize the driver assignments on a map of Cam
 
 ## Future Work
 
-- [ ] Implement a traveling salesman algorithm to determine the pick-up order for each driver.
-- [ ] Quantify the error of the current approximation compared to a full brute-force solution.
-- [ ] Incorporate destination information into the cost function.
-- [ ] Use road network distance (e.g., from an API like Google Maps) instead of straight-line physical distance.
-- [ ] Allow for variable car sizes for each driver.
+- Implement a traveling salesman algorithm to determine the pick-up order for each driver.
+- Quantify the error of the current approximation compared to a full brute-force solution.
+- Incorporate destination information into the cost function.
+- Use road network distance (e.g., from an API like Google Maps) instead of straight-line physical distance.
+- Allow for variable car sizes for each driver.
 
 ## Contributing
 
