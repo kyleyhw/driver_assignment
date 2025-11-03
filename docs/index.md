@@ -10,6 +10,8 @@ This page serves as the central hub for all documentation related to the Driver 
 
 - [**`solve.py`**](./solve.md): This document explains the main optimization script. It describes the integer programming model, the use of Google's CP-SAT solver, and the constraints and objective function that define the assignment problem.
 
+- [**Pickup Order Determination**](./pickup_order.md): This document details the methodology for determining the optimal pickup order for drivers assigned to multiple passengers, including mathematical explanations of the Traveling Salesperson Problem (TSP) and the chosen nearest-neighbor heuristic.
+
 ## Main Project README
 
 For a general overview of the project, including installation instructions, usage, and future work, please see the [main README file](../README.md).
