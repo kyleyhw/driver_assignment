@@ -139,6 +139,13 @@ The project includes scripts to visualize the driver assignments on a map of Cam
 
 ![Driver Assignments](driver_assignment_plot.png)
 
+### Additional Examples
+
+![Driver Assignments 0](plots/driver_assignment_0.png)
+![Driver Assignments 1](plots/driver_assignment_1.png)
+![Driver Assignments 2](plots/driver_assignment_2.png)
+![Driver Assignments 3](plots/driver_assignment_3.png)
+
 ## Future Work
 
 - Implement a traveling salesman algorithm to determine the pick-up order for each driver.
