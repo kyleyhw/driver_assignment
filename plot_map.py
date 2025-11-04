@@ -16,7 +16,7 @@ web_mercator = Proj(init="epsg:3857")  # Web Mercator (meters)
 longlat_to_webmercator = translate_coordinates(input_coordinate_system=wgs84, output_coordinate_system=web_mercator).translate
 
 
-def plot_driver_routes(driver_assignments, driver_names, driver_coords_raw, passenger_names_raw, passenger_coords_raw, output_filename='driver_assignment_plot.png'):
+def plot_driver_routes(driver_assignments, driver_names, driver_coords_raw, passenger_names_raw, passenger_coords_raw, output_filename='driver_assignment_plot.png', title='Driver Assignments'):
     """
     Plots the driver assignments, including pickup order with arrows, and a legend.
 
@@ -86,6 +86,7 @@ def plot_driver_routes(driver_assignments, driver_names, driver_coords_raw, pass
         ctx.add_basemap(ax, source=ctx.providers.OpenStreetMap.Mapnik, crs="EPSG:3857", zoom=10)
 
 
+    ax.set_title(title)
     ax.set_ylabel('Y coordinate (Web Mercator)')
     ax.set_xlabel('X coordinate (Web Mercator)')
 
@@ -110,7 +111,21 @@ def plot_driver_routes(driver_assignments, driver_names, driver_coords_raw, pass
 
 
 if __name__ == '__main__':
-    people_information_dataframe = get_df()
-    driver_assignments, driver_names, driver_coords, passenger_names, passenger_coords = solve(people_information_dataframe=people_information_dataframe, verbose=True)
-    
-    plot_driver_routes(driver_assignments, driver_names, driver_coords, passenger_names, passenger_coords)
+    import os
+    data_dir = 'data'
+    plots_dir = 'plots'
+    if not os.path.exists(plots_dir):
+        os.makedirs(plots_dir)
+
+    for i in range(0, 4):
+        data_filename = os.path.join(data_dir, f'people_{i}.csv')
+        plot_filename = os.path.join(plots_dir, f'driver_assignment_{i}.png')
+        plot_title = f'Driver Assignments (Data Set {i})'
+
+        people_information_dataframe = get_df(df_filename=data_filename)
+        driver_assignments, driver_names, driver_coords, passenger_names, passenger_coords = solve(people_information_dataframe=people_information_dataframe, verbose=True)
+        
+        if driver_assignments is None:
+            print(f"No solution found for {data_filename}. Skipping plot.")
+            continue
+        plot_driver_routes(driver_assignments, driver_names, driver_coords, passenger_names, passenger_coords, output_filename=plot_filename, title=plot_title)

@@ -40,7 +40,8 @@ The primary components of this project are:
 ├───ex_sample.shp
 ├───LICENSE
 ├───misc_funcs.py
-├───people.csv
+├───data/
+├───plots/
 ├───plot_map.py
 ├───plot_polygons.py
 ├───README.md
