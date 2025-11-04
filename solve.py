@@ -100,6 +100,6 @@ def solve(people_information_dataframe, verbose=False, cost_function=None, api_k
 
     return driver_assignments, driver_names, driver_coords, passenger_names, passenger_coords
 
-if __name__ == '__solve__':
+if __name__ == '__main__':
     from data_loader import get_df
     solve(people_information_dataframe=get_df(), verbose=True)
